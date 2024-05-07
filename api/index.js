@@ -6,15 +6,15 @@ const cors = require('cors')
 
 const app = express();
 
-const connectDB = require('./db/connect');
-const productRouter = require('./routes/products');
-const authRouter = require('./routes/auth')
+const connectDB = require('../db/connect');
+const productRouter = require('../routes/products');
+const authRouter = require('../routes/auth')
 
 
-const notFoundMiddleware = require('./middlewares/notFoundMiddleware')
-const errorHandler = require('./middlewares/error-handler')    
+const notFoundMiddleware = require('../middlewares/notFoundMiddleware')
+const errorHandler = require('../middlewares/error-handler')    
 
-const authenticationMiddleware = require('./middlewares/authentication')
+const authenticationMiddleware = require('../middlewares/authentication')
 
 app.use(express.json());
 app.use(cors())
