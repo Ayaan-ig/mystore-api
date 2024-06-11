@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "nodemon app.js",
+    "vercel-build": "echo hello",
+    "build" : "netlify deploy --prod"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +18,10 @@
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.1",
-    "nodemon": "^3.1.0"
+    "netlify-cli": "^17.23.5",
+    "netlify-lambda": "^2.0.16",
+    "nodemon": "^3.1.0",
+    "serverless-http": "^3.2.0"
   },
-  "devDependencies": {},
   "description": ""
 }

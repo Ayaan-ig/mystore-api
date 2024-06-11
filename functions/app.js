@@ -3,6 +3,7 @@ require('dotenv').config()
 
 const express = require('express');
 const cors = require('cors')
+const serverless = require('serverless-http')
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(cors())
 
 //routes
 
-app.get('/',(req,res)=>res.send('<h1>Cart API</h1> <a href="/api/v1/cart">go to cart api</a>'))
+app.get('/.netlify/functions/api',(req,res)=>res.send('<h1>Cart API</h1> <a href="/api/v1/cart">go to cart api</a>'))
 
 app.use('/api/v1/cart',authenticationMiddleware,productRouter);
 app.use('/api/v1/auth',authRouter);
@@ -35,10 +36,11 @@ const start = async ()=>{
     try {
         
         await connectDB(process.env.MONGO_URI);
-        app.listen(port,console.log(`server is listening on port ${port}`) )
+        app.listen(port,()=>console.log(`server is listening on port ${port}`) )
     } catch (error) {
         console.error(error);
     }
 }
 
 start();
+module.exports.handler = serverless (app)
